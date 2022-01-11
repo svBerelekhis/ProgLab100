@@ -51,4 +51,7 @@ public class PeopleFabrica {
         }
         return res;
     }
+    public PeopleFabrica(){
+        random = new Random();
+    }
 }

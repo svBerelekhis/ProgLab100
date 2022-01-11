@@ -1,8 +1,8 @@
 import java.util.ArrayList;
 
 public class People {
-    private final String name;
-    private ArrayList<SocialNetwork> socialNetworks;
+    final String name;
+    final ArrayList<SocialNetwork> socialNetworks;
     int age;
     boolean isMan;
     public People(String name, ArrayList<SocialNetwork> socialNetworks, int age, boolean isMan){
@@ -14,5 +14,15 @@ public class People {
 
     public String getName() {
         return name;
+    }
+
+    @Override
+    public String toString() {
+        return "People{" +
+                "name='" + name + '\'' +
+                ", socialNetworks=" + socialNetworks +
+                ", age=" + age +
+                ", isMan=" + isMan +
+                '}';
     }
 }
