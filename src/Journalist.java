@@ -5,9 +5,7 @@ public class Journalist extends People implements Volunteersvable{
     public String toString() {
         return "Journalist{" +
                 "name='" + name + '\'' +
-                ", socialNetworks=" + socialNetworks +
                 ", age=" + age +
-                ", isMan=" + isMan +
                 '}';
     }
 
@@ -16,7 +14,9 @@ public class Journalist extends People implements Volunteersvable{
     }
 
     @Override
-    public void publicToSN() {
-
+    public void publicToSN(FlashMob flashMob) {
+        for(SocialNetwork socialNetwork : this.socialNetworks){
+            socialNetwork.publish(this, flashMob);
+        }
     }
 }

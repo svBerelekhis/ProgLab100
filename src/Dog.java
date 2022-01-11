@@ -1,7 +1,7 @@
 public class Dog extends Animal{
-    SocialStatus socialStatus;
-    public Dog(String name, SocialStatus socialStatus) {
-        super(name);
-        this.socialStatus = socialStatus;
+
+    public Dog(String name, int age, String color, SocialStatus socialStatus) {
+        super(name, age, color, socialStatus);
     }
+
 }

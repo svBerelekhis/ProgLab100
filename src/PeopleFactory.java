@@ -1,7 +1,7 @@
 import java.util.ArrayList;
 import java.util.Random;
 
-public class PeopleFabrica {
+public class PeopleFactory {
     Random random;
     String[] womenNames = new String[]{"Анна", "Татьяна", "Ольга", "Александра", "Галина", "Светлана", "Виктория", "София"};
     String[] menNames = new String[]{"Алексей", "Анатолий", "Виктор", "Роман", "Константин", "Андрей", "Илья", "Никита"};
@@ -18,8 +18,19 @@ public class PeopleFabrica {
         if (inVk == 1){
             socialNetworks.add(VK.getVk());
         }
-        if (inFac == 1){
-            socialNetworks.add(Facebook.getFacebook());
+        try {
+            if (inFac == 1){
+                if (nowAge < 45){
+                    throw new TooYoungForSNException();
+                }
+                socialNetworks.add(Facebook.getFacebook());
+            }
+        }catch (TooYoungForSNException e){
+            String who = "него";
+            if (!isMan){
+                who = "нее";
+            }
+            Printer.print(nowName + " регистрируется на facebook. Но там у "+ who + " совсем нет друзей, поэтому публикаций никто не увидит");
         }
         if (socialNetworks.size() == 0){
             socialNetworks.add(Odnokclassniki.getOdnokclassniki());
@@ -38,9 +49,9 @@ public class PeopleFabrica {
 
     private String makeName(boolean isMan){
         if (isMan){
-            return menNames[random.nextInt(8)] + " " + menSoname[random.nextInt(8)];
+            return menNames[random.nextInt(menNames.length)] + " " + menSoname[random.nextInt(menSoname.length)];
         }
-        return womenNames[random.nextInt(8)] + " " + womenSoname[random.nextInt(8)];
+        return womenNames[random.nextInt(womenNames.length)] + " " + womenSoname[random.nextInt(womenSoname.length)];
     }
     public Volunteersvable[] getSomeVolunteers(int count){
         TypeOfPeople[] types = new TypeOfPeople[]{TypeOfPeople.BUSINESSMAN, TypeOfPeople.JOURNALIST, TypeOfPeople.MUSICIAN};
@@ -51,7 +62,7 @@ public class PeopleFabrica {
         }
         return res;
     }
-    public PeopleFabrica(){
+    public PeopleFactory(){
         random = new Random();
     }
 }

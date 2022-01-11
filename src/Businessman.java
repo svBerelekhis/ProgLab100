@@ -9,14 +9,14 @@ public class Businessman extends People implements Volunteersvable{
     public String toString() {
         return "Businessman{" +
                 "name='" + name + '\'' +
-                ", socialNetworks=" + socialNetworks +
                 ", age=" + age +
-                ", isMan=" + isMan +
                 '}';
     }
 
     @Override
-    public void publicToSN() {
-
+    public void publicToSN(FlashMob flashMob) {
+        for(SocialNetwork socialNetwork : this.socialNetworks){
+            socialNetwork.publish(this, flashMob);
+        }
     }
 }

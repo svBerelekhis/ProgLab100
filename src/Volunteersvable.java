@@ -1,3 +1,3 @@
 public interface Volunteersvable {
-    void publicToSN();
+    void publicToSN(FlashMob flashMob);
 }
