@@ -1,6 +1,9 @@
-public class SocialNetwork {
+public abstract class SocialNetwork {
     String name;
-    public void publish(People people, FlashMob flashMob, String text){
-        Printer.print(this.name + ":\n" + people.toString() + " написал: " + text +"\n"+ flashMob.getHashtag());
+    public SocialNetwork(String name){
+        this.name = name;
+    }
+    public void publish(People people, FlashMob flashMob) {
+        Printer.print(name + ": новая запись от " + people.getName() + ".\n" + flashMob.getText() + "\n" + flashMob.getHashtag());
     }
 }
