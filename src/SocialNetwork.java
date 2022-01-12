@@ -3,13 +3,13 @@ public abstract class SocialNetwork {
     public SocialNetwork(String name){
         this.name = name;
     }
-    public void publish(People people, FlashMob flashMob) {
-        Printer.print(name + ": новая запись от " + people.toString() + ".\n" + flashMob.getText() + "\n" + flashMob.getHashtag());
+    public void publish(People people, FlashMob flashMob, String text) {
+        Printer.print(name + ": новая запись от " + people.toString() + ".\n" + text + "\n" + flashMob.getHashtag() + "\n");
     }
     public void publish(Shelter shelter, FlashMob flashMob, String text){
-        Printer.print(name + " : новая запись от " + shelter.getName() + ".\n" + text + "\n" + flashMob.getHashtag());
+        Printer.print(name + " : новая запись от " + shelter.toString() + ".\n" + text  + flashMob.getHashtag() + "\n");
     }
-    public void publish(Shelter shelter, String text){
-        Printer.print(name + " : новая запись от " + shelter.getName() + ".\n" + text);
+    public void publish(People people, String text){
+        Printer.print(name + " : новая запись от " + people.toString() + ".\n" + text + "\n");
     }
 }

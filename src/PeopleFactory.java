@@ -8,18 +8,18 @@ public class PeopleFactory {
     String[] womenSoname = new String[]{"Агеева", "Булгакова", "Винокурова", "Горелова", "Давыдова", "Ежова", "Жданова", "Зорина"};
     String[] menSoname = new String[]{"Смирнов", "Иванов", "Кузнецов", "Соколов", "Попов", "Петров", "Лебедев", "Козлов"};
 
-    public People makePeople(TypeOfPeople typeOfPeople, boolean isMan){
+    public People makePeople(TypeOfPeople typeOfPeople, boolean isMan, int inVk, int inFac){
         int nowAge = random.nextInt(62);
         nowAge += 18;
         String nowName = makeName(isMan);
-        int inVk = random.nextInt(2);
-        int inFac = random.nextInt(2);
+        inVk += random.nextInt(2);
+        inFac += random.nextInt(2);
         ArrayList<SocialNetwork> socialNetworks = new ArrayList<>();
-        if (inVk == 1){
+        if (inVk >= 1){
             socialNetworks.add(VK.getVk());
         }
         try {
-            if (inFac == 1){
+            if (inFac >= 1){
                 if (nowAge < 45){
                     throw new TooYoungForSNException();
                 }
@@ -58,7 +58,15 @@ public class PeopleFactory {
         Volunteersvable[] res = new Volunteersvable[count];
         for (int i = 0; i < count; i++){
             int isThisMan = random.nextInt(2);
-            res[i] = (Volunteersvable) makePeople(types[random.nextInt(3)], isThisMan >= 1);
+            res[i] = (Volunteersvable) makePeople(types[random.nextInt(3)], isThisMan >= 1, 0, 0);
+        }
+        return res;
+    }
+    public People[] getSomePeople(int count){
+        People[] res = new People[count];
+        for (int i = 0; i < count; i++){
+            int isThisMan = random.nextInt(2);
+            res[i] = makePeople(TypeOfPeople.PEOPLE, isThisMan >= 1, 1, 1);
         }
         return res;
     }

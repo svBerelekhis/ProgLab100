@@ -8,6 +8,7 @@ public class Animal{
         this.name = name;
         this.age = age;
         this.color = color;
+        this.socialStatus = socialStatus;
     }
     public void chengSocialStatus(SocialStatus newSocialStatus){
         this.socialStatus = newSocialStatus;

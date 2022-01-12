@@ -20,12 +20,13 @@ public class People implements Hostable{
 
     @Override
     public String toString() {
-        return "People{" +
-                "name='" + name + '\'' +
-                ", age=" + age +
-                '}';
+        return name + " (" + this.age + " лет)";
     }
-
+    public void publishToPersonalSN(String text){
+        for (SocialNetwork sn: socialNetworks){
+            sn.publish(this, text);
+        }
+    }
     @Override
     public void takeResponsibility(Animal animal) {
         this.animals.add(animal);

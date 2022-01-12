@@ -7,16 +7,17 @@ public class Musician extends People implements Volunteersvable{
 
     @Override
     public String toString() {
-        return "Musician{" +
-                "name='" + name + '\'' +
-                ", age=" + age +
-                '}';
+        return name + " (Музыкант, " + age + " лет)";
     }
 
     @Override
-    public void publicToSN(FlashMob flashMob) {
+    public void publicToSN(FlashMob flashMob, Animal animal) {
+        StringBuilder sb = new StringBuilder();
+        sb.append("Сегодня Я хочу помочь этой собаке найти дом. Вот информация о ней:\n");
+        sb.append(animal.toString());
+        sb.append("\nМне важно чтобы хотябы у этой собаки все в жизни было хорошо, поэтому я самостоятельно привезу ее новым хозяевам");
         for(SocialNetwork socialNetwork : this.socialNetworks){
-            socialNetwork.publish(this, flashMob);
+            socialNetwork.publish(this, flashMob, sb.toString());
         }
     }
 }

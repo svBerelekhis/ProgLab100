@@ -10,7 +10,7 @@ public class AnimalFactory {
     "Евита", "Жюли", "Жюльетта", "Злата", "Искра", "Кукки", "Лилу"};
     String[] animalsColors = new String[]{"Черный", "Белый", "Рыжий", "Серый", "Черно-рыжий", "Черно-белый", "Рыже-белый"};
     public Animal makeAnimal(TypeOfAnimal typeOfAnimal, boolean isMale, SocialStatus socialStatus){
-        int age = random.nextInt(20) + 1;
+        int age = random.nextInt(15) + 1;
         String name;
         if (isMale){
             name = animalsNamesMale[random.nextInt(animalsNamesMale.length)];
