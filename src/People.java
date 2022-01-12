@@ -1,10 +1,10 @@
 import java.util.ArrayList;
 
 public class People implements Hostable{
-    final String name;
-    final ArrayList<SocialNetwork> socialNetworks;
-    int age;
-    boolean isMan;
+    protected final String name;
+    protected final ArrayList<SocialNetwork> socialNetworks;
+    protected int age;
+    protected boolean isMan;
     ArrayList<Animal> animals;
     public People(String name, ArrayList<SocialNetwork> socialNetworks, int age, boolean isMan){
         this.name = name;

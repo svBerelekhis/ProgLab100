@@ -11,7 +11,7 @@ public class Main {
         for (Animal animal: animals){
             shelter.takeResponsibility(animal);
         }
-        FlashMob flashMob = new FlashMob(shelter, "ПесНаСчастье", "Сегодня Я хочу помочь этой собаке найти дом. Мне очень важна его судьба поэтому я лично передам его новым хозяевам");
+        FlashMob flashMob = new FlashMob("ПесНаСчастье", "Сегодня Я хочу помочь этой собаке найти дом. Мне очень важна его судьба поэтому я лично передам его новым хозяевам");
         shelter.publicationAtSN(flashMob);
         Volunteersvable[] volunteersvables = peopleFactory.getSomeVolunteers(random.nextInt(28) + 5);
         Mechanism mechanism = new Mechanism("если хотя бы один человек поможет одной собаке найти семью, беспризорных псов на улицах города станет меньше");

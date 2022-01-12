@@ -2,13 +2,13 @@ import java.util.Random;
 
 public class AnimalFactory {
     Random random;
-    String[] animalsNamesMale = new String[]{"Аватар", "Алтaй", "Барон", "Бонд", "Бутч", "Буян", "Вальтер",
+    private final String[] animalsNamesMale = new String[]{"Аватар", "Алтaй", "Барон", "Бонд", "Бутч", "Буян", "Вальтер",
     "Винстон", "Вольф", "Вжик", "Вольдемар", "Гамлет", "Гилмор", "Гэри", "Герцог", "Данте", "Джокер", "Дени", "Ельсон",
     "Закат", "Зорро", "Изюм", "Раф", "Рольф", "Ян"};
-    String[] animalsNamesFemale = new String[]{"Ада", "Айка", "Айса", "Астра", "Бусинка", "Берта", "Венеция",
+    private final String[] animalsNamesFemale = new String[]{"Ада", "Айка", "Айса", "Астра", "Бусинка", "Берта", "Венеция",
     "Виолетта", "Вэлла", "Венера", "Габи", "Глафира", "Гермиона", "Джесси", "Дива", "Джоли", "Дора", "Ева", "Есения",
     "Евита", "Жюли", "Жюльетта", "Злата", "Искра", "Кукки", "Лилу"};
-    String[] animalsColors = new String[]{"Черный", "Белый", "Рыжий", "Серый", "Черно-рыжий", "Черно-белый", "Рыже-белый"};
+    private final String[] animalsColors = new String[]{"Черный", "Белый", "Рыжий", "Серый", "Черно-рыжий", "Черно-белый", "Рыже-белый"};
     public Animal makeAnimal(TypeOfAnimal typeOfAnimal, boolean isMale, SocialStatus socialStatus){
         int age = random.nextInt(15) + 1;
         String name;

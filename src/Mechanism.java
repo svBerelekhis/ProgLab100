@@ -1,7 +1,7 @@
 import java.util.ArrayList;
 
 public class Mechanism {
-    String description;
+    private final String description;
     public void activate(Volunteersvable[] volunteersvables, ArrayList<Animal> animals, People[] people, FlashMob flashMob, Shelter shelter){
         publicMechanism();
         int i = 0;
