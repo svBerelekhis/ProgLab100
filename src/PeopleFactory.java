@@ -8,12 +8,16 @@ public class PeopleFactory {
     String[] womenSoname = new String[]{"Агеева", "Булгакова", "Винокурова", "Горелова", "Давыдова", "Ежова", "Жданова", "Зорина"};
     String[] menSoname = new String[]{"Смирнов", "Иванов", "Кузнецов", "Соколов", "Попов", "Петров", "Лебедев", "Козлов"};
 
-    public People makePeople(TypeOfPeople typeOfPeople, boolean isMan, int inVk, int inFac){
+    public People makePeople(TypeOfPeople typeOfPeople, boolean isMan, int inVk, int inFac, int inTw, int inTik, int inInst, int inOdn){
         int nowAge = random.nextInt(62);
         nowAge += 18;
         String nowName = makeName(isMan);
         inVk += random.nextInt(2);
         inFac += random.nextInt(2);
+        inInst += random.nextInt(2);
+        inTik += random.nextInt(2);
+        inTw += random.nextInt(2);
+        inOdn += random.nextInt(2);
         ArrayList<SocialNetwork> socialNetworks = new ArrayList<>();
         if (inVk >= 1){
             socialNetworks.add(VK.getVk());
@@ -30,7 +34,41 @@ public class PeopleFactory {
             if (!isMan){
                 who = "нее";
             }
-            Printer.print(nowName + " регистрируется на facebook. Но там у "+ who + " совсем нет друзей, поэтому публикаций никто не увидит");
+            Printer.print(nowName + " регистрируется на facebook. Но там у "+ who + " совсем нет друзей-ископаемых, поэтому публикаций никто не увидит");
+        }
+        if (inInst >= 1){
+            socialNetworks.add(Instagram.getInstagram());
+        }
+        if (inTw >= 1) {
+            socialNetworks.add(Twitter.getTwitter());
+        }
+        try {
+            if (inTik >= 1){
+                if (nowAge >= 30){
+                    throw new ToOldForSNException();
+                }
+                socialNetworks.add(Tiktok.getTiktok());
+            }
+        }catch (ToOldForSNException e){
+            String who = "он";
+            if (!isMan){
+                who = "она";
+            }
+            Printer.print(nowName + " регистрируется в тикток. Но "+ who + " ни за что не будт что-то публиковать там. Потому что люди после 30 в тиктоке выглядят странно.");
+        }
+        try {
+            if (inOdn >= 1){
+                if (nowAge < 65){
+                    throw new TooYoungForSNException();
+                }
+                socialNetworks.add(Facebook.getFacebook());
+            }
+        }catch (TooYoungForSNException e){
+            String who = "ему";
+            if (!isMan){
+                who = "ей";
+            }
+            Printer.print(nowName + " регистрируется на одноклассниках. Но "+ who + " там совсем не интересно, поэтому там ничего не публикуется");
         }
         if (socialNetworks.size() == 0){
             socialNetworks.add(Odnokclassniki.getOdnokclassniki());
@@ -58,7 +96,7 @@ public class PeopleFactory {
         Volunteersvable[] res = new Volunteersvable[count];
         for (int i = 0; i < count; i++){
             int isThisMan = random.nextInt(2);
-            res[i] = (Volunteersvable) makePeople(types[random.nextInt(3)], isThisMan >= 1, 0, 0);
+            res[i] = (Volunteersvable) makePeople(types[random.nextInt(3)], isThisMan >= 1, 0, 0, 0, 0, 0, 0);
         }
         return res;
     }
@@ -66,7 +104,7 @@ public class PeopleFactory {
         People[] res = new People[count];
         for (int i = 0; i < count; i++){
             int isThisMan = random.nextInt(2);
-            res[i] = makePeople(TypeOfPeople.PEOPLE, isThisMan >= 1, 1, 1);
+            res[i] = makePeople(TypeOfPeople.PEOPLE, isThisMan >= 1, 1, 1, 1, 1, 1, 1);
         }
         return res;
     }

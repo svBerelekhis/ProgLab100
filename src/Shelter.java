@@ -4,10 +4,12 @@ public class Shelter implements Hostable{
     private final String name;
     private ArrayList<Animal> wards;
     private final ArrayList<SocialNetwork> socialNetworks = new ArrayList<>();
+    int size;
 
-    public Shelter(String name) {
+    public Shelter(String name, int size) {
         this.name = name;
         this.wards = new ArrayList<>();
+        this.size = size;
     }
     public void publicationAtSN(FlashMob flashMob){
         StringBuilder sb = new StringBuilder();
@@ -26,9 +28,20 @@ public class Shelter implements Hostable{
     }
 
     public void finishFlashMOb(FlashMob flashMob){
-        String text = "Вот и завершился флешмоб! Многие собаки нашли новый дом и собак на улице стало меньше!";
+        StringBuilder sb = new StringBuilder();
+        sb.append("Вот и завершился флешмоб! Многие собаки нашли новый дом и собак на улице стало меньше! \n Дом нашли для:\n");
+        ArrayList<Animal> newWards = new ArrayList<>();
+        for (Animal ward : this.wards){
+            if (ward.socialStatus == SocialStatus.HOME){
+                sb.append(ward.name).append("\n");
+            } else {
+                newWards.add(ward);
+            }
+        }
+        this.wards = newWards;
+        sb.append("В приюте осталось ").append(this.wards.size()).append(" собак!");
         for (SocialNetwork socialNetwork : socialNetworks){
-            socialNetwork.publish(this, flashMob, text);
+            socialNetwork.publish(this, flashMob, sb.toString());
         }
     }
 
@@ -36,6 +49,9 @@ public class Shelter implements Hostable{
         socialNetworks.add(VK.getVk());
         socialNetworks.add(Facebook.getFacebook());
         socialNetworks.add(Odnokclassniki.getOdnokclassniki());
+        socialNetworks.add(Tiktok.getTiktok());
+        socialNetworks.add(Instagram.getInstagram());
+        socialNetworks.add(Twitter.getTwitter());
     }
     public String getName(){
         return this.name;
@@ -43,6 +59,9 @@ public class Shelter implements Hostable{
 
     @Override
     public void takeResponsibility(Animal animal) {
+        if (wards.size() >= size){
+            throw new ShelterIsOverflowError();
+        }
         this.wards.add(animal);
         animal.chengSocialStatus(SocialStatus.SHELTER);
     }

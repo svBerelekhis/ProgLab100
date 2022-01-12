@@ -1,4 +1,5 @@
 public enum TypeOfAnimal {
     DOG,
-    ANIMAL
+    CAT,
+    RAT
 }

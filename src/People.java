@@ -29,6 +29,8 @@ public class People implements Hostable{
     }
     @Override
     public void takeResponsibility(Animal animal) {
+
         this.animals.add(animal);
+        animal.chengSocialStatus(SocialStatus.HOME);
     }
 }

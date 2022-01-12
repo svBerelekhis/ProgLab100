@@ -20,9 +20,10 @@ public class AnimalFactory {
         String color = animalsColors[random.nextInt(animalsColors.length)];
         if(typeOfAnimal == TypeOfAnimal.DOG){
             return new Dog(name, age, color, socialStatus);
-        }
-        else {
-            return new Animal(name, age, color, socialStatus);
+        }else if (typeOfAnimal == TypeOfAnimal.CAT){
+            return new Cat(name, age, color, socialStatus);
+        }else{
+            return new Rat(name, age, color, socialStatus);
         }
     }
     public Animal[] getSomeAnimals(int count, TypeOfAnimal typeOfAnimal, SocialStatus socialStatus){
