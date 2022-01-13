@@ -20,4 +20,5 @@ public class Musician extends People implements Volunteersvable{
             socialNetwork.publish(this, flashMob, sb.toString());
         }
     }
+
 }

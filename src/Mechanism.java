@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.Objects;
 
 public class Mechanism {
     private final String description;
@@ -31,4 +32,16 @@ public class Mechanism {
         this.description = description;
     }
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Mechanism mechanism = (Mechanism) o;
+        return Objects.equals(description, mechanism.description);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(description);
+    }
 }

@@ -9,4 +9,8 @@ public class Instagram extends SocialNetwork{
         }
         return instagram;
     }
+    @Override
+    public String toString() {
+        return "Сотсеть : " + name ;
+    }
 }

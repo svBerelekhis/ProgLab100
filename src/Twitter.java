@@ -9,4 +9,9 @@ public class Twitter extends SocialNetwork{
         }
         return twitter;
     }
+
+    @Override
+    public String toString() {
+        return "Сотсеть : " + name ;
+    }
 }

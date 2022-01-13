@@ -9,4 +9,8 @@ public class Facebook extends SocialNetwork{
         }
         return facebook;
     }
+    @Override
+    public String toString() {
+        return "Сотсеть : " + name ;
+    }
 }

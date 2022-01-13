@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.Objects;
 
 public class Shelter implements Hostable{
     private final String name;
@@ -73,5 +74,21 @@ public class Shelter implements Hostable{
     @Override
     public String toString() {
         return "Приют " + this.name;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Shelter shelter = (Shelter) o;
+        return size == shelter.size &&
+                Objects.equals(name, shelter.name) &&
+                Objects.equals(wards, shelter.wards) &&
+                Objects.equals(socialNetworks, shelter.socialNetworks);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(name, wards, socialNetworks, size);
     }
 }

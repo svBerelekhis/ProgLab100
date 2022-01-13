@@ -1,3 +1,5 @@
+import java.util.Arrays;
+import java.util.Objects;
 import java.util.Random;
 
 public class AnimalFactory {
@@ -36,5 +38,35 @@ public class AnimalFactory {
     }
     public AnimalFactory(){
         random = new Random();
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        AnimalFactory that = (AnimalFactory) o;
+        return Objects.equals(random, that.random) &&
+                Arrays.equals(animalsNamesMale, that.animalsNamesMale) &&
+                Arrays.equals(animalsNamesFemale, that.animalsNamesFemale) &&
+                Arrays.equals(animalsColors, that.animalsColors);
+    }
+
+    @Override
+    public int hashCode() {
+        int result = Objects.hash(random);
+        result = 31 * result + Arrays.hashCode(animalsNamesMale);
+        result = 31 * result + Arrays.hashCode(animalsNamesFemale);
+        result = 31 * result + Arrays.hashCode(animalsColors);
+        return result;
+    }
+
+    @Override
+    public String toString() {
+        return "AnimalFactory{" +
+                "random=" + random +
+                ", animalsNamesMale=" + Arrays.toString(animalsNamesMale) +
+                ", animalsNamesFemale=" + Arrays.toString(animalsNamesFemale) +
+                ", animalsColors=" + Arrays.toString(animalsColors) +
+                '}';
     }
 }

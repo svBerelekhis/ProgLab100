@@ -9,4 +9,19 @@ public class Odnokclassniki extends SocialNetwork{
         }
         return odnokclassniki;
     }
+
+    @Override
+    public String toString() {
+        return "Сотсеть : " + name ;
+    }
+
+    @Override
+    public int hashCode() {
+        return super.hashCode();
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        return super.equals(obj);
+    }
 }

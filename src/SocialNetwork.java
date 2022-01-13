@@ -12,4 +12,8 @@ public abstract class SocialNetwork {
     public void publish(People people, String text){
         Printer.print(name + " : новая запись от " + people.toString() + ".\n" + text + "\n");
     }
+    @Override
+    public String toString() {
+        return "Сотсеть : " + name ;
+    }
 }

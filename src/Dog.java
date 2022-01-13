@@ -13,4 +13,5 @@ public class Dog extends Animal{
                 "социальный статус: " + socialStatus.toString();
     }
 
+
 }

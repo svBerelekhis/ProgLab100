@@ -9,4 +9,10 @@ public class VK extends SocialNetwork{
         }
         return vk;
     }
+
+    @Override
+    public String toString() {
+        return "Сотсеть : " + name;
+    }
+
 }

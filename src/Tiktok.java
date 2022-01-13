@@ -9,4 +9,8 @@ public class Tiktok extends SocialNetwork{
         }
         return tiktok;
     }
+    @Override
+    public String toString() {
+        return "Сотсеть : " + name ;
+    }
 }

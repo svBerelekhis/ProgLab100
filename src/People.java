@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.Objects;
 
 public class People implements Hostable{
     protected final String name;
@@ -18,10 +19,6 @@ public class People implements Hostable{
         return name;
     }
 
-    @Override
-    public String toString() {
-        return name + " (" + this.age + " лет)";
-    }
     public void publishToPersonalSN(String text){
         for (SocialNetwork sn: socialNetworks){
             sn.publish(this, text);
@@ -32,5 +29,33 @@ public class People implements Hostable{
 
         this.animals.add(animal);
         animal.chengSocialStatus(SocialStatus.HOME);
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        People people = (People) o;
+        return age == people.age &&
+                isMan == people.isMan &&
+                Objects.equals(name, people.name) &&
+                Objects.equals(socialNetworks, people.socialNetworks) &&
+                Objects.equals(animals, people.animals);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(name, socialNetworks, age, isMan, animals);
+    }
+
+    @Override
+    public String toString() {
+        return "People{" +
+                "name='" + name + '\'' +
+                ", socialNetworks=" + socialNetworks +
+                ", age=" + age +
+                ", isMan=" + isMan +
+                ", animals=" + animals +
+                '}';
     }
 }

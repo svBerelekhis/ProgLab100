@@ -1,4 +1,6 @@
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Objects;
 import java.util.Random;
 
 public class PeopleFactory {
@@ -110,5 +112,38 @@ public class PeopleFactory {
     }
     public PeopleFactory(){
         random = new Random();
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        PeopleFactory that = (PeopleFactory) o;
+        return Objects.equals(random, that.random) &&
+                Arrays.equals(womenNames, that.womenNames) &&
+                Arrays.equals(menNames, that.menNames) &&
+                Arrays.equals(womenSoname, that.womenSoname) &&
+                Arrays.equals(menSoname, that.menSoname);
+    }
+
+    @Override
+    public int hashCode() {
+        int result = Objects.hash(random);
+        result = 31 * result + Arrays.hashCode(womenNames);
+        result = 31 * result + Arrays.hashCode(menNames);
+        result = 31 * result + Arrays.hashCode(womenSoname);
+        result = 31 * result + Arrays.hashCode(menSoname);
+        return result;
+    }
+
+    @Override
+    public String toString() {
+        return "PeopleFactory{" +
+                "random=" + random +
+                ", womenNames=" + Arrays.toString(womenNames) +
+                ", menNames=" + Arrays.toString(menNames) +
+                ", womenSoname=" + Arrays.toString(womenSoname) +
+                ", menSoname=" + Arrays.toString(menSoname) +
+                '}';
     }
 }
