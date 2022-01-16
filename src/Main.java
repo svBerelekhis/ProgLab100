@@ -1,3 +1,14 @@
+import animal.Animal;
+import animal.AnimalFactory;
+import animal.SocialStatus;
+import animal.TypeOfAnimal;
+import people.People;
+import people.PeopleFactory;
+import people.Volunteersvable;
+import shelterAndCo.FlashMob;
+import shelterAndCo.Mechanism;
+import shelterAndCo.Shelter;
+
 import java.util.Random;
 
 public class Main {
