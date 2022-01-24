@@ -4,15 +4,28 @@ import java.util.Arrays;
 import java.util.Objects;
 import java.util.Random;
 
+/**
+ * Класс-фабрика, создающая объекты класса Animal
+ */
 public class AnimalFactory {
     Random random;
+    /** Возможные имена для собак (кобели) */
     private final String[] animalsNamesMale = new String[]{"Аватар", "Алтaй", "Барон", "Бонд", "Бутч", "Буян", "Вальтер",
     "Винстон", "Вольф", "Вжик", "Вольдемар", "Гамлет", "Гилмор", "Гэри", "Герцог", "Данте", "Джокер", "Дени", "Ельсон",
     "Закат", "Зорро", "Изюм", "Раф", "Рольф", "Ян"};
+    /** Возможные имена для собак (суки) */
     private final String[] animalsNamesFemale = new String[]{"Ада", "Айка", "Айса", "Астра", "Бусинка", "Берта", "Венеция",
     "Виолетта", "Вэлла", "Венера", "Габи", "Глафира", "Гермиона", "Джесси", "Дива", "Джоли", "Дора", "Ева", "Есения",
     "Евита", "Жюли", "Жюльетта", "Злата", "Искра", "Кукки", "Лилу"};
+    /** Возможные цвета собак */
     private final String[] animalsColors = new String[]{"Черный", "Белый", "Рыжий", "Серый", "Черно-рыжий", "Черно-белый", "Рыже-белый"};
+    /**
+     * Функция makeAnimal
+     * @param  typeOfAnimal - тип животного
+     * @param  isMale - пол животного
+     * @param  socialStatus - социальный статус животного
+     * @return новое животоное, с заданными параметрами
+     */
     public Animal makeAnimal(TypeOfAnimal typeOfAnimal, boolean isMale, SocialStatus socialStatus){
         int age = random.nextInt(15) + 1;
         String name;
@@ -30,6 +43,13 @@ public class AnimalFactory {
             return new Rat(name, age, color, socialStatus);
         }
     }
+    /**
+     * Функция getSomeAnimals
+     * @param  count - количество животных
+     * @param  typeOfAnimal - тип животных
+     * @param  socialStatus - социальный статус животных
+     * @return массив живоных с заданными параметрами
+     */
     public Animal[] getSomeAnimals(int count, TypeOfAnimal typeOfAnimal, SocialStatus socialStatus){
         Animal[] res = new Animal[count];
         for (int i = 0; i < count; i++){
@@ -38,10 +58,19 @@ public class AnimalFactory {
         }
         return res;
     }
+
+    /**
+     * Конструктор - создание нового объекта
+     */
     public AnimalFactory(){
         random = new Random();
     }
 
+    /**
+     * Функция equals
+     * @param  o - объект с которым сравниваем
+     * @return равны ли объекты
+     */
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -53,6 +82,10 @@ public class AnimalFactory {
                 Arrays.equals(animalsColors, that.animalsColors);
     }
 
+    /**
+     * Функция hashCode
+     * @return хеш-код
+     */
     @Override
     public int hashCode() {
         int result = Objects.hash(random);
@@ -62,6 +95,10 @@ public class AnimalFactory {
         return result;
     }
 
+    /**
+     * Функция toString
+     * @return строковое представление класса
+     */
     @Override
     public String toString() {
         return "animal.AnimalFactory{" +

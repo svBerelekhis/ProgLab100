@@ -11,6 +11,10 @@ import shelterAndCo.Shelter;
 
 import java.util.Random;
 
+/**
+ * Программа Реализующая флешиоб по пристройству собак
+ * @autor Svetlana Berelekhis
+ */
 public class Main {
     public static void main(String[] args){
         Random random = new Random();

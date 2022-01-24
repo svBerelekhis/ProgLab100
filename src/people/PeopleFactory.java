@@ -10,13 +10,32 @@ import java.util.Arrays;
 import java.util.Objects;
 import java.util.Random;
 
+/**
+ * Класс-фабрика, создающая объекты класса People
+ */
 public class PeopleFactory {
     private final Random random;
+    /** Возможные имена женщин */
     private final String[] womenNames = new String[]{"Анна", "Татьяна", "Ольга", "Александра", "Галина", "Светлана", "Виктория", "София"};
+    /** Возможные имена мужчин */
     private final String[] menNames = new String[]{"Алексей", "Анатолий", "Виктор", "Роман", "Константин", "Андрей", "Илья", "Никита"};
+    /** Возможные фамилии женщин */
     private final String[] womenSoname = new String[]{"Агеева", "Булгакова", "Винокурова", "Горелова", "Давыдова", "Ежова", "Жданова", "Зорина"};
+    /** Возможные фамилии мужчин */
     private final String[] menSoname = new String[]{"Смирнов", "Иванов", "Кузнецов", "Соколов", "Попов", "Петров", "Лебедев", "Козлов"};
 
+    /**
+     * Функция makePeople
+     * @param  typeOfPeople - тип человека
+     * @param  isMan - пол
+     * @param  inVk - начальные параметры о Vk
+     * @param inFac - начальные параметры о Fb
+     * @param inInst - начальные параметры о Inst
+     * @param inOdn - начальные параметры о Odn
+     * @param inTik - начальные параметры о Tiktok
+     * @param inTw -  начальные параметры о Twitter
+     * @return новый человек, с заданными параметрами
+     */
     public People makePeople(TypeOfPeople typeOfPeople, boolean isMan, int inVk, int inFac, int inTw, int inTik, int inInst, int inOdn){
         int nowAge = random.nextInt(62);
         nowAge += 18;
@@ -94,12 +113,23 @@ public class PeopleFactory {
         }
     }
 
+    /**
+     * Функция makeName
+     * @param isMan - пол
+     * @return новая пара имя + фамилия, сооответствующая полу
+     */
     private String makeName(boolean isMan){
         if (isMan){
             return menNames[random.nextInt(menNames.length)] + " " + menSoname[random.nextInt(menSoname.length)];
         }
         return womenNames[random.nextInt(womenNames.length)] + " " + womenSoname[random.nextInt(womenSoname.length)];
     }
+
+    /**
+     * Функция getSomeVolunteers
+     * @param  count - количество волонтеров
+     * @return масссив новых волонтеров
+     */
     public Volunteersvable[] getSomeVolunteers(int count){
         TypeOfPeople[] types = new TypeOfPeople[]{TypeOfPeople.BUSINESSMAN, TypeOfPeople.JOURNALIST, TypeOfPeople.MUSICIAN};
         Volunteersvable[] res = new Volunteersvable[count];
@@ -109,6 +139,11 @@ public class PeopleFactory {
         }
         return res;
     }
+    /**
+     * Функция getSomePeople
+     * @param  count - количество людей
+     * @return масссив новых людей
+     */
     public People[] getSomePeople(int count){
         People[] res = new People[count];
         for (int i = 0; i < count; i++){
@@ -117,10 +152,18 @@ public class PeopleFactory {
         }
         return res;
     }
+    /**
+     * Конструктор - создание нового объекта
+     */
     public PeopleFactory(){
         random = new Random();
     }
 
+    /**
+     * Функция equals
+     * @param  o - объект с которым сравниваем
+     * @return равны ли объекты
+     */
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -133,6 +176,10 @@ public class PeopleFactory {
                 Arrays.equals(menSoname, that.menSoname);
     }
 
+    /**
+     * Функция hashCode
+     * @return хеш-код
+     */
     @Override
     public int hashCode() {
         int result = Objects.hash(random);
@@ -143,6 +190,10 @@ public class PeopleFactory {
         return result;
     }
 
+    /**
+     * Функция toString
+     * @return строковое представление класса
+     */
     @Override
     public String toString() {
         return "people.PeopleFactory{" +

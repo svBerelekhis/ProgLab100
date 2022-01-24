@@ -1,5 +1,7 @@
 package animal;
-
+/**
+ * Enum, описывающий социальный статус
+ */
 public enum SocialStatus {
     HOME("Домашний"),
     WILD("Уличный"),
