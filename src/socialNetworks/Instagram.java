@@ -1,5 +1,8 @@
 package socialNetworks;
 
+/**
+ * Класс-синглетон Instagram
+ */
 public class Instagram extends SocialNetwork {
     private static Instagram instagram;
     private Instagram(){
@@ -11,6 +14,11 @@ public class Instagram extends SocialNetwork {
         }
         return instagram;
     }
+
+    /**
+     * Функция toString
+     * @return строковое представление класса
+     */
     @Override
     public String toString() {
         return "Сотсеть : " + name ;

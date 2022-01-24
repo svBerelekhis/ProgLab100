@@ -1,5 +1,8 @@
 package socialNetworks;
 
+/**
+ * Класс-синглетон Twitter
+ */
 public class Twitter extends SocialNetwork {
     private static Twitter twitter;
     private Twitter(){
@@ -12,6 +15,10 @@ public class Twitter extends SocialNetwork {
         return twitter;
     }
 
+    /**
+     * Функция toString
+     * @return строковое представление класса
+     */
     @Override
     public String toString() {
         return "Сотсеть : " + name ;

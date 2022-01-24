@@ -1,5 +1,8 @@
 package socialNetworks;
 
+/**
+ * Класс-синглетон Odnokclassniki
+ */
 public class Odnokclassniki extends SocialNetwork {
     private static Odnokclassniki odnokclassniki;
     private Odnokclassniki(){
@@ -12,18 +15,13 @@ public class Odnokclassniki extends SocialNetwork {
         return odnokclassniki;
     }
 
+
+    /**
+     * Функция toString
+     * @return строковое представление класса
+     */
     @Override
     public String toString() {
         return "Сотсеть : " + name ;
-    }
-
-    @Override
-    public int hashCode() {
-        return super.hashCode();
-    }
-
-    @Override
-    public boolean equals(Object obj) {
-        return super.equals(obj);
     }
 }

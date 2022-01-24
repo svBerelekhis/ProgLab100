@@ -1,5 +1,8 @@
 package socialNetworks;
 
+/**
+ * Класс-синглетон Facebook
+ */
 public class Facebook extends SocialNetwork {
     private static Facebook facebook;
     private Facebook(){
@@ -11,6 +14,10 @@ public class Facebook extends SocialNetwork {
         }
         return facebook;
     }
+    /**
+     * Функция toString
+     * @return строковое представление класса
+     */
     @Override
     public String toString() {
         return "Сотсеть : " + name ;
